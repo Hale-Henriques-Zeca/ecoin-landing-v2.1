@@ -20,7 +20,20 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[95vh] overflow-hidden flex items-center justify-center text-center bg-black">
+    <section className="
+  relative
+  w-full
+  min-h-[90vh]
+  sm:h-[95vh]
+  overflow-hidden
+  flex
+  flex-col
+  items-center
+  justify-start
+  bg-black
+  pt-safe
+">
+
 
       {/* Fundo Radial */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.35),transparent_70%)] animate-pulse"></div>
@@ -59,10 +72,10 @@ export default function Hero() {
 
       {/* LOGO + CÍRCULO PREMIUM */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.7 }}
-        animate={{ opacity: 1, scale: 1.5 }}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
-        className="relative z-20"
+        className="relative z-20 mt-16 sm:mt-21"
       >
         <div className="relative flex justify-center">
 
@@ -82,46 +95,51 @@ export default function Hero() {
           <Image
             src="/logo.png"
             alt="E-Coin Logo"
-            width={450}
-            height={300}
-            className="drop-shadow-[0_0_25px_rgba(212,175,55,0.65)]"
+            width={300}
+            height={180}
+            className="w-[220px] sm:w-[280px] md:w-[360px] drop-shadow-[0_0_25px_rgba(212,175,55,0.65)]"
           />
         </div>
       </motion.div>
 
       {/* TÍTULO + BOTÕES */}
       <motion.div
-        className="relative z-20 mt-6"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.4 }}
-      >
-        <h1 className="text-5xl md:text-6xl font-extrabold text-[#D4AF37] tracking-wider drop-shadow-lg">
-          THE OFFICIAL E-COIN
-        </h1>
+  className="relative z-20 mt-8 px-4 flex flex-col items-center text-center"
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1.4 }}
+>
+  <h1 className="
+    text-3xl sm:text-4xl md:text-5xl lg:text-5xl
+    font-extrabold
+    text-[#D4AF37]
+    tracking-wider
+    drop-shadow-lg
+    max-w-3xl
+  ">
+    THE OFFICIAL E-COIN
+  </h1>
 
-        <p className="text-gray-300 text-lg md:text-xl mt-4 max-w-2xl mx-auto">
-          A moeda corporativa da EdenKingDom — construída com tecnologia, segurança e visão eterna.
-        </p>
+  <p className="
+    text-gray-300
+    text-sm sm:text-base md:text-lg
+    mt-4
+    max-w-xl
+  ">
+    A moeda corporativa da EdenKingDom — construída com tecnologia, segurança e visão eterna.
+  </p>
+
 
         {/* NOVA ORGANIZAÇÃO DE BOTÕES */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 mt-5">
 
           <Button text="Whitepaper" href="/whitepaper" />
 
-          <Button text="Preço da E-Coin" href="/price" />
-
-          <Button text="Comprar E-Coin" href="https://t.me/ecoinpublicbot" />
-
-          <Button text="Investir" href="https://t.me/ecoinpublicbot" />
-
-          <Button text="Vender E-Coin" href="/swap" />
-
-          <Button text="Calculadora de Juros" href="/calculator" />
-
-          <Button text="Conversor Global" href="/converter" />
+          <Button text="E-Coin Business Presentation" href="/EcoinBusinessPresentation" />
 
           <Button text="Líder de Equipes" href="/equipes" />
+
+          <Button text="Interpretação de Solidity da E-Coin" href="/ECoinSolidity" />
 
         </div>
 
@@ -134,8 +152,19 @@ function Button({ text, href }: { text: string; href: string }) {
   return (
     <a
       href={href}
-      className="px-6 py-3 rounded-xl bg-[#D4AF37] text-black font-semibold 
-      hover:bg-[#bfa536] transition shadow-xl"
+      className="
+  px-4 py-2
+  sm:px-6 sm:py-3
+  text-sm sm:text-base
+  rounded-xl
+  bg-[#D4AF37]
+  text-black
+  font-semibold
+  hover:bg-[#bfa536]
+  transition
+  shadow-xl
+  w-full
+"
     >
       {text}
     </a>

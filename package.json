@@ -9,9 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.87.1",
+    "@pancakeswap/sdk": "^4.0.0",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.4.2",
+    "@supabase/supabase-js": "^2.89.0",
+    "@tanstack/react-query": "^5.90.12",
+    "axios": "^1.13.2",
     "chart.js": "^4.5.1",
-    "framer-motion": "^12.23.24",
+    "ethers": "^6.16.0",
+    "framer-motion": "^12.23.26",
+    "html2pdf.js": "^0.12.1",
     "jspdf": "^3.0.4",
     "jspdf-autotable": "^5.0.2",
     "lucide-react": "^0.555.0",
@@ -20,6 +27,9 @@
     "react": "^19.2.3",
     "react-chartjs-2": "^5.3.1",
     "react-dom": "^19.2.3",
+    "react-icons": "^5.5.0",
+    "react-snowfall": "^2.4.0",
+    "three": "^0.182.0",
     "viem": "^2.40.3",
     "wagmi": "^3.0.2"
   },

@@ -1,15 +1,19 @@
-// src/app/layout.tsx
-"use client";
-
 import "./globals.css";
 import Header from "@/components/Header";
+import { Providers } from "./providers";
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="pt">
       <body>
-        <Header />
-        {children}
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );

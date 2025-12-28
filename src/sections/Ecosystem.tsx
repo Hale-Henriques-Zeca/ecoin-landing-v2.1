@@ -15,7 +15,7 @@ export default function Ecosystem() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-10 text-4xl font-bold text-[#D4AF37]"
+        className="text-center mb-10 text-3xl font-bold text-[#D4AF37]"
       >
         ECOSSISTEMA • EDENKINGDOM
       </motion.h2>

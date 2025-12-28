@@ -29,7 +29,7 @@ export default function Roadmap() {
         className="max-w-3xl text-center text-gray-300 mb-16 px-4 leading-relaxed"
       >
         A evolução oficial da moeda corporativa da EdenKingDom — crescimento
-        contínuo, listagens globais e adoção mundial até 2030.
+        contínuo, listagens globais e adoção mundial até 2027.
       </motion.p>
 
       {/* Timeline Container */}
