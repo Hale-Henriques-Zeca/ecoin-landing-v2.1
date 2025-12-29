@@ -4,7 +4,9 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Sphere, Line } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
+import { Line2 } from "three-stdlib";
 
+/* 🌍 Globo rotativo */
 function RotatingGlobe() {
   const globeRef = useRef<THREE.Mesh>(null);
 
@@ -24,8 +26,9 @@ function RotatingGlobe() {
   );
 }
 
+/* 📈 Linha animada */
 function GrowingChart() {
-  const lineRef = useRef<THREE.Line>(null);
+  const lineRef = useRef<Line2>(null);
 
   useFrame(({ clock }) => {
     if (lineRef.current) {
@@ -47,6 +50,7 @@ function GrowingChart() {
   );
 }
 
+/* 🌌 Background */
 export default function GlobeChartBackground() {
   return (
     <Canvas
