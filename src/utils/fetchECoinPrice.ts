@@ -1,27 +1,38 @@
 import axios from "axios";
 
-// Par E-Coin / USDT na PancakeSwap
-const API_URL =
-  "https://api.dexscreener.com/latest/dex/pairs/bsc/0xDf69235019cc416dd5Be75dfc0eDc922aB4b5964_0x55d398326f99059fF775485246999027B3197955";
+/**
+ * 🔐 Fonte oficial do preço da E-Coin
+ * Endpoint interno (controlado pela EdenKingDom)
+ *
+ * Atualmente:
+ * - Preço fixo mock: $0.30
+ * Futuramente:
+ * - Leitura direta da E-SWAP on-chain
+ */
+
+const API_URL = "/api/ecoin-price";
 
 export async function fetchECoinPrice() {
   try {
     const res = await axios.get(API_URL);
-    const pair = res.data?.pair;
+    const data = res.data;
 
-    if (pair && pair.priceUsd) {
-      return {
-        price: parseFloat(pair.priceUsd),
-        volume: pair.volume?.h24,
-        liquidity: pair.liquidity?.usd,
-        change24h: pair.priceChange?.h24,
-      };
-    } else {
-      console.warn("⚠️ Nenhum dado de preço retornado da DexScreener.");
+    if (!data || typeof data.price !== "number") {
+      console.warn("⚠️ API E-Coin retornou dados inválidos:", data);
       return null;
     }
+
+    return {
+      price: data.price,        // 💰 preço oficial
+      volume: null,             // 🔜 virá da E-Swap
+      liquidity: null,          // 🔜 virá da E-Swap
+      change24h: null,          // 🔜 virá da E-Swap
+      source: data.source,      // ex: "E-SWAP (mock)"
+      status: data.status,      // ex: "ok" | "paused"
+    };
+
   } catch (err) {
-    console.error("Erro ao buscar preço da E-Coin:", err);
+    console.error("❌ Erro ao buscar preço da E-Coin:", err);
     return null;
   }
 }
