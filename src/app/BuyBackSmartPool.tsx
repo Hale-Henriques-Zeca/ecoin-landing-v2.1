@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useAccount, useConnect } from "wagmi";
-import { BrowserProvider, Contract } from "ethers";
+import { BrowserProvider, Contract, parseUnits } from "ethers";
 import { motion } from "framer-motion";
 import { fetchECoinPrice } from "@/utils/fetchECoinPrice";
 
@@ -54,14 +54,14 @@ const [contactMethod, setContactMethod] = useState("email"); // se estiver usand
     try {
       setLoading(true);
 
-      const provider = new BrowserProvider(window.ethereum!);
+      const provider = new BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
 
+const contract = new Contract(CONTRACT_ADDRESS, ABI, signer);
 
-      const signer = await provider.getSigner();
-      const contract = new Contract(CONTRACT_ADDRESS, ABI, signer);
-      const amountInWei = ethers.parseUnits(amount || "0", 18);
-      const tx = await contract.buyBack(amountInWei, Number(timeLock));
-      const receipt = await tx.wait();
+const amountInWei = parseUnits(amount || "0", 18);
+const tx = await contract.buyBack(amountInWei, Number(timeLock));
+await tx.wait();
 
       setTxHash(receipt.hash);
       setLocks([...locks, { amount, timeLock, hash: receipt.hash }]);
