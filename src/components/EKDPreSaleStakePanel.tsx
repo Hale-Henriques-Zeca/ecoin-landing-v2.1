@@ -109,7 +109,7 @@ useEffect(() => {
             </div>
             <p className="text-lg">⏰ 7 dias, 12 horas restantes</p>
             <button
-              onClick={() => window.open("https://t.me/ecoin_public_bot", "_blank")}
+              onClick={() => window.open("https://t.me/EKDCoinSaleBot", "_blank")}
               className="mt-6 bg-[#D4AF37] text-black font-bold py-3 px-8 rounded-xl hover:bg-[#b8962c] transition"
             >
               💰 Buy via Telegram Bot
