@@ -92,13 +92,21 @@ export default function Hero() {
           ></motion.div>
 
           {/* LOGO */}
-          <Image
-            src="/logo.png"
-            alt="E-Coin Logo"
-            width={300}
-            height={180}
-            className="w-[220px] sm:w-[280px] md:w-[360px] drop-shadow-[0_0_25px_rgba(212,175,55,0.65)]"
-          />
+<Image
+  src="/images/ecoin-logo.png"
+  alt="E-Coin Logo"
+  width={300}
+  height={300}
+  priority
+  className="
+    w-[200px]
+    sm:w-[240px]
+    md:w-[260px]
+    object-contain
+    drop-shadow-[0_0_30px_rgba(212,175,55,0.75)]
+  "
+/>
+
         </div>
       </motion.div>
 
