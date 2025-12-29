@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useAccount, useConnect } from "wagmi";
-import * as ethers from "ethers";
+import { BrowserProvider, Contract } from "ethers";
 import { motion } from "framer-motion";
 import { fetchECoinPrice } from "@/utils/fetchECoinPrice";
 
@@ -47,15 +47,18 @@ const [contactMethod, setContactMethod] = useState("email"); // se estiver usand
 
   async function handleBuyBack() {
     if (!isConnected) return alert("Conecte a carteira primeiro!");
-    if (!window.ethereum) return alert("Carteira não detectada");
+    if (typeof window === "undefined" || !("ethereum" in window)) {
+  return alert("Carteira não encontrada");
+}
 
     try {
       setLoading(true);
 
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
-      const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
+      const provider = new BrowserProvider(window.ethereum!);
 
+
+      const signer = await provider.getSigner();
+      const contract = new Contract(CONTRACT_ADDRESS, ABI, signer);
       const amountInWei = ethers.parseUnits(amount || "0", 18);
       const tx = await contract.buyBack(amountInWei, Number(timeLock));
       const receipt = await tx.wait();

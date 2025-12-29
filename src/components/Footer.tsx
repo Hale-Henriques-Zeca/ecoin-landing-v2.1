@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
+import {FaInstagram, FaTiktok, FaFacebookF, FaYoutube, FaTelegramPlane, FaTelegram, FaWhatsapp, FaTwitter, FaDiscord } from "react-icons/fa";
 export default function Footer() {
 
 
@@ -145,32 +145,24 @@ export default function Footer() {
   transition={{ duration: 0.6 }}
 >
   <h3 className="text-xl font-semibold text-[#D4AF37] mb-4">Redes sociais da E-Coin</h3>
-  <div className="flex flex-wrap gap-3">
-    <a href="https://t.me/ecoin2025" target="_blank" rel="noopener noreferrer"
-       className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all">
-       📢 Telegram Canal
-    </a>
-    <a href="https://t.me/ecoin2026" target="_blank" rel="noopener noreferrer"
-       className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all">
-       💬 Telegram Grupo
-    </a>
-    <a href="https://chat.whatsapp.com/G1F6USX5NrrLKikm7yiXXQ" target="_blank" rel="noopener noreferrer"
-       className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all">
-       💬 WhatsApp Grupo da E-Coin
-    </a>
-    <a href="https://discord.gg/HkNkSkBJ" target="_blank" rel="noopener noreferrer"
-       className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all">
-       💬 Discord Comunidade
-    </a>
-    <a href="https://discord.com/users/1443996675638300834" target="_blank" rel="noopener noreferrer"
-       className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all">
-       👑 Discord Perfil Oficial
-    </a>
-    <a href="https://x.com/CoinE28810?t=Dm9BWORAfzh5YcuqHYIUwQ&s=09" target="_blank" rel="noopener noreferrer"
-       className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all">
-       🕊 X / Twitter
-    </a>
-  </div>
+  <div className="flex gap-2 text-4xl">
+                <a href="https://t.me/ecoin2026" target="_blank" rel="noopener noreferrer">
+                  <FaTelegramPlane className="hover:text-white transition" />
+                </a>
+                <a href="https://x.com/CoinE28810?t=Dm9BWORAfzh5YcuqHYIUwQ&s=09" target="_blank" rel="noopener noreferrer">
+                  <FaTwitter className="hover:text-white transition" />
+                </a>
+                <a href="https://t.me/ecoin2025" target="_blank" rel="noopener noreferrer">
+                            <FaTelegram className="hover:text-white transition" />
+                          </a>
+                <a href="https://chat.whatsapp.com/G1F6USX5NrrLKikm7yiXXQ" target="_blank" rel="noopener noreferrer">
+                  <FaWhatsapp className="hover:text-white transition" />
+                </a> 
+                <a href="https://discord.com/users/1443996675638300834" target="_blank" rel="noopener noreferrer">
+                  <FaDiscord className="hover:text-white transition" /> 
+                </a>         
+              </div>
+
 </motion.div>
 
 {/* REDES SOCIAIS DO CEO */}
@@ -183,39 +175,22 @@ export default function Footer() {
   <h3 className="text-xl font-semibold text-[#D4AF37] mb-4">
     Redes sociais do CEO
   </h3>
-  <div className="flex flex-wrap gap-3">
-    <a
-      href="https://instagram.com/athelstanatanas"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all"
-    >
-      👑 Instagram (CEO)
-    </a>
-    <a
-      href="https://facebook.com/share/p/1Cvuw7CCPN"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all"
-    >
-      📘 Facebook (CEO)
-    </a>
-    <a
-      href="https://x.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all"
-    >
-      🕊 X / Twitter (CEO)
-    </a>
-    <a
-      href="#"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all"
-    >
-      🎵 TikTok (CEO)
-    </a>
+    <div className="flex gap-5 text-4xl">
+                
+                <a href="https://instagram.com/athelstanatanas" target="_blank" rel="noopener noreferrer">
+                  <FaInstagram className="hover:text-white transition" />
+                </a>
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+                  <FaTwitter className="hover:text-white transition" />
+                </a>
+  
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                  <FaFacebookF className="hover:text-white transition" /> 
+                </a>    
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+                  <FaTiktok className="hover:text-white transition" /> 
+                </a>        
+              
   </div>
 </motion.div>
 
@@ -241,68 +216,40 @@ export default function Footer() {
       📢 Canal WhatsApp EKD Oficial
     </a>
 
-    <a
-      href="https://tiktok.com/@edenkingdomcorp2025"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all"
-    >
-      🎵 TikTok da EKD Oficial
-    </a>
+    <div className="flex gap-2 text-2xl">
+                <a href="https://t.me/EdenKingDom" target="_blank" rel="noopener noreferrer">
+                  <FaTelegramPlane className="hover:text-white transition" />
+                </a>
+                <a href="https://instagram.com/edenkingdom.corp" target="_blank" rel="noopener noreferrer">
+                  <FaInstagram className="hover:text-white transition" />
+                </a>
+                <a href="https://x.com/EdenkingdomCorp" target="_blank" rel="noopener noreferrer">
+                  <FaTwitter className="hover:text-white transition" />
+                </a>
+                
+                <a href="https://youtube.com/channel/UCA7ndIm6iUhybDU72KxcLKg" target="_blank" rel="noopener noreferrer">
+                  <FaYoutube className="hover:text-white transition" />
+                </a>
 
-    <a
-      href="https://youtube.com/channel/UCA7ndIm6iUhybDU72KxcLKg"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all"
-    >
-      📹 YouTube EKD Oficial
-    </a>
-
-    <a
-      href="https://t.me/EKDCorp"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all"
-    >
-      📢 Canal Telegram EKD Oficial
-    </a>
-
-    <a
-      href="https://x.com/EdenkingdomCorp"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all"
-    >
-      🕊 X / Twitter EKD Oficial
-    </a>
-
-    <a
-      href="https://facebook.com/share/p/17mv9drSUK"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all"
-    >
-      📘 Facebook EKD Oficial
-    </a>
-
-    <a
-      href="https://t.me/EdenKingDom"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all"
-    >
-      💬 Grupo Telegram EKD Oficial
-    </a>
-
-    <a
-      href="https://instagram.com/edenkingdom.corp"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#D4AF37]/10 border border-[#D4AF37]/40 rounded-full px-4 py-2 text-sm text-[#D4AF37] hover:bg-[#D4AF37]/20 hover:shadow-[0_0_10px_#D4AF37aa] transition-all"
-    >
-      📸 Instagram EKD Oficial
-    </a>
+                <a href="https://discord.gg/HkNkSkBJ" target="_blank" rel="noopener noreferrer">
+                  <FaDiscord className="hover:text-white transition" />
+                </a>
+                <a href="https://t.me/EKDCorp" target="_blank" rel="noopener noreferrer">
+                            <FaTelegram className="hover:text-white transition" />
+                          </a>
+                <a href="https://chat.whatsapp.com/G1F6USX5NrrLKikm7yiXXQ" target="_blank" rel="noopener noreferrer">
+                  <FaWhatsapp className="hover:text-white transition" /> 
+                </a> 
+                <a href="https://discord.com/users/1443996675638300834" target="_blank" rel="noopener noreferrer">
+                  <FaDiscord className="hover:text-white transition" /> 
+                </a>  
+                <a href="https://facebook.com/share/p/17mv9drSUK" target="_blank" rel="noopener noreferrer">
+                  <FaFacebookF className="hover:text-white transition" /> 
+                </a>    
+                <a href="https://tiktok.com/@edenkingdomcorp2025" target="_blank" rel="noopener noreferrer">
+                  <FaTiktok className="hover:text-white transition" /> 
+                </a>        
+              </div>
   </div>
 </motion.div>
 

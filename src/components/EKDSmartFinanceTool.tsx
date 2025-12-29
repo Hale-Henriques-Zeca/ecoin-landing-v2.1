@@ -3,26 +3,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Line } from "react-chartjs-2";
-import { ethers } from "ethers";
+import { JsonRpcProvider } from "ethers";
 import axios from "axios";
-import {
-  ChainId,
-  Fetcher,
-  Route,
-  Token,
-  WETH,
-} from "@pancakeswap/sdk";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Tooltip,
-  Filler,
-} from "chart.js";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler);
+
 
 
 export default function EKDSmartFinanceTool() {
@@ -68,49 +52,47 @@ export default function EKDSmartFinanceTool() {
     "USD", "EUR", "GBP", "MZN", "BTC", "ETH", "BNB", "USDT", "E-COIN",
   ];
 
-  const fetchLiveRate = async (from: string, to: string) => {
-    setLoading(true);
-    try {
-      // === Caso especial E-COIN (via PancakeSwap SDK) ===
-      if (from === "E-COIN" || to === "E-COIN") {
-        const provider = new ethers.providers.JsonRpcProvider("bsc-dataseed.binance.org");
-        const ECOIN_ADDRESS = "0xDf69235019cc416dd5Be75dfc0eDc922aB4b5964"; // Coloque o contrato da E-COIN aqui
-const USDT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955"; // Endereço oficial USDT na BSC
-        const pair = await Fetcher.fetchPairData(Ecoin, Usdt, provider);
-        const route = new Route([pair], Usdt);
-        const ecoinToUsd = parseFloat(route.midPrice.invert().toSignificant(6));
-        setRate(ecoinToUsd);
-        return ecoinToUsd;
+ const fetchLiveRate = async (from: string, to: string) => {
+  setLoading(true);
+
+  try {
+    // ✅ E-COIN → API interna (server-side)
+    if (from === "E-COIN" || to === "E-COIN") {
+      const res = await fetch("/api/ecoin-price");
+
+      if (!res.ok) {
+        throw new Error("Erro ao chamar API E-COIN");
       }
 
-      // === Para as outras moedas (CoinGecko API) ===
-      const res = await axios.get(
-        `https://api.coingecko.com/api/v3/simple/price?ids=${from.toLowerCase()}&vs_currencies=${to.toLowerCase()}`
-      );
-      const rateValue = res.data[from.toLowerCase()]?.[to.toLowerCase()] ?? 1;
-      setRate(rateValue);
-      return rateValue;
-    } catch (err) {
-      console.error("Erro ao buscar taxa:", err);
-      setRate(null);
-      return null;
-    } finally {
-      setLoading(false);
-    }
-  };
+      const data = await res.json();
+      const price = Number(data.price);
 
-  useEffect(() => {
-    if (fromCurrency && toCurrency) fetchLiveRate(fromCurrency, toCurrency);
-  }, [fromCurrency, toCurrency]);
-
-  useEffect(() => {
-    if (amount && rate) {
-      const numeric = parseFloat(amount as string);
-      if (!isNaN(numeric)) {
-        setConverted(parseFloat((numeric * rate).toFixed(4)));
-      }
+      setRate(price);
+      return price;
     }
-  }, [amount, rate]);
+
+    // 🌍 Outras moedas → CoinGecko
+    const res = await axios.get(
+      `https://api.coingecko.com/api/v3/simple/price?ids=${from.toLowerCase()}&vs_currencies=${to.toLowerCase()}`
+    );
+
+    const rateValue =
+      res.data[from.toLowerCase()]?.[to.toLowerCase()] ?? 1;
+
+    setRate(rateValue);
+    return rateValue;
+
+  } catch (err) {
+    console.error("Erro ao buscar taxa:", err);
+    setRate(null);
+    return null;
+
+  } finally {
+    setLoading(false);
+  }
+};
+
+
 
   // ====== MARKET DASHBOARD ======
   const [marketData, setMarketData] = useState<

@@ -1,31 +1,53 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaSnowflake, FaTelegramPlane, FaTwitter, FaDiscord } from "react-icons/fa";
+import { FaSnowflake, FaTelegramPlane, FaTelegram, FaWhatsapp, FaTwitter, FaDiscord } from "react-icons/fa";
 import { BsStars } from "react-icons/bs";
 
 
 export default function EKDPreSaleStakePanel() {
   const [mode, setMode] = useState("presale");
 
+  const [mounted, setMounted] = useState(false);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
+
+
+  // ✅ POSIÇÕES FIXAS PARA EVITAR HYDRATION ERROR
+  const [particles] = useState(() =>
+    Array.from({ length: 40 }).map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `-${Math.random() * 20}%`,
+      duration: 6 + Math.random() * 6,
+    }))
+  );
+
   const fadeUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
+  if (!mounted) return null;
+
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-black via-[#0A0A0A] to-[#1A1A1A] text-gray-300 py-20 px-6 rounded-3xl border border-[#D4AF37]/20 shadow-lg mb-16">
       {/* ❄️ Snow Effect Layer */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {[...Array(40)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-[#D4AF37]/30"
-            style={{ left: `${Math.random() * 100}%`, top: `-${Math.random() * 20}%` }}
-            animate={{ y: [0, 800], opacity: [1, 0.2] }}
-            transition={{ duration: 6 + Math.random() * 6, repeat: Infinity, ease: "linear" }}
-          >
+        {particles.map((p, i) => (
+  <motion.div
+    key={i}
+    className="absolute text-[#D4AF37]/30"
+    style={{ left: p.left, top: p.top }}
+    animate={{ y: ["0%", "120%"] }}
+    transition={{
+      duration: 10 + Math.random() * 10,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+  >
             <FaSnowflake />
           </motion.div>
         ))}
@@ -122,17 +144,24 @@ export default function EKDPreSaleStakePanel() {
         variants={fadeUp}
       >
         <p className="text-sm mb-2 text-gray-400">Conecte-se à comunidade E-Coin</p>
-        <div className="flex gap-5 text-2xl">
-          <a href="https://t.me/EKDCoinSaleBot" target="_blank" rel="noopener noreferrer">
-            <FaTelegramPlane className="hover:text-white transition" />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <FaTwitter className="hover:text-white transition" />
-          </a>
-          <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
-            <FaDiscord className="hover:text-white transition" />
-          </a>
-        </div>
+       <div className="flex gap-5 text-2xl">
+                     <a href="https://t.me/ecoin2026" target="_blank" rel="noopener noreferrer">
+                       <FaTelegramPlane className="hover:text-white transition" />
+                     </a>
+                     <a href="https://x.com/CoinE28810?t=Dm9BWORAfzh5YcuqHYIUwQ&s=09" target="_blank" rel="noopener noreferrer">
+                       <FaTwitter className="hover:text-white transition" />
+                     </a>
+                     <a href="https://discord.com/users/1443996675638300834" target="_blank" rel="noopener noreferrer">
+                       <FaDiscord className="hover:text-white transition" />
+                     </a>
+                     <a href="https://t.me/ecoin2025" target="_blank" rel="noopener noreferrer">
+                                 <FaTelegram className="hover:text-white transition" />
+                               </a>
+                     <a href="https://chat.whatsapp.com/G1F6USX5NrrLKikm7yiXXQ" target="_blank" rel="noopener noreferrer">
+                       <FaWhatsapp className="hover:text-white transition" />
+                     </a>          
+                   </div>
+        
         <BsStars className="text-3xl mt-4 animate-pulse text-[#D4AF37]" />
       </motion.div>
     </div>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FaSnowflake, FaTelegramPlane, FaTwitter, FaDiscord } from "react-icons/fa";
+import { FaTelegramPlane, FaTelegram, FaWhatsapp, FaTwitter, FaDiscord } from "react-icons/fa";
 import { BsStars } from "react-icons/bs";
 
 export default function ECoinOnChainPresale() {
@@ -11,33 +11,41 @@ export default function ECoinOnChainPresale() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
+  /* ⛔ CONTROLE DE HYDRATION */
+  const [mounted, setMounted] = useState(false);
+
   /* ⏳ Countdown */
   const presaleEnd = new Date("2025-12-31T23:59:59Z").getTime();
   const [timeLeft, setTimeLeft] = useState(presaleEnd - Date.now());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(presaleEnd - Date.now());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const days = Math.max(Math.floor(timeLeft / 86400000), 0);
-  const hours = Math.max(Math.floor((timeLeft / 3600000) % 24), 0);
-  const minutes = Math.max(Math.floor((timeLeft / 60000) % 60), 0);
-  const seconds = Math.max(Math.floor((timeLeft / 1000) % 60), 0);
 
   /* 📊 Estado de compra */
   const [walletConectada, setWalletConectada] = useState(false);
   const [mostrarCompra, setMostrarCompra] = useState(false);
   const [usdt, setUsdt] = useState("");
 
+  useEffect(() => {
+    setMounted(true);
+
+    const timer = setInterval(() => {
+      setTimeLeft(presaleEnd - Date.now());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  /* ✅ SÓ AGORA podemos retornar */
+  if (!mounted) return null;
+
+  const days = Math.max(Math.floor(timeLeft / 86400000), 0);
+  const hours = Math.max(Math.floor((timeLeft / 3600000) % 24), 0);
+  const minutes = Math.max(Math.floor((timeLeft / 60000) % 60), 0);
+  const seconds = Math.max(Math.floor((timeLeft / 1000) % 60), 0);
+
   const precoECoin = 0.05;
   const ecoinRecebida = usdt ? (Number(usdt) / precoECoin).toFixed(2) : "0";
 
   return (
     <section className="relative min-h-screen w-full bg-black text-white overflow-hidden">
-
       {/* 🌌 FUNDO */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/70" />
@@ -99,11 +107,8 @@ export default function ECoinOnChainPresale() {
 
           {walletConectada && (
             <div className="space-y-4 text-left">
-
               <div>
-                <label className="text-xs text-gray-300">
-                  Valor em USDT
-                </label>
+                <label className="text-xs text-gray-300">Valor em USDT</label>
                 <input
                   type="number"
                   value={usdt}
@@ -131,11 +136,6 @@ export default function ECoinOnChainPresale() {
             </div>
           )}
 
-          {/* CONVIDAR */}
-          <button className="w-full py-2.5 rounded-full text-sm font-semibold border border-[#D4AF37]">
-            CONVIDAR AMIGOS
-          </button>
-
           {/* FOOTER */}
           <p className="text-sm mb-2 text-gray-400">Conecte-se à comunidade E-Coin</p>
           <div className="flex justify-center gap-3 text-[10px] text-gray-300">
@@ -143,21 +143,27 @@ export default function ECoinOnChainPresale() {
             <span>Auditado</span>
             <span>Whitepaper</span>
             <span>BscScan</span>
-           
-        <div className="flex gap-5 text-2xl">
-          <a href="https://t.me/EKDCoinSaleBot" target="_blank" rel="noopener noreferrer">
-            <FaTelegramPlane className="hover:text-white transition" />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <FaTwitter className="hover:text-white transition" />
-          </a>
-          <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
-            <FaDiscord className="hover:text-white transition" />
-          </a>
-        </div>
-        <BsStars className="text-3xl mt-4 animate-pulse text-[#D4AF37]" />
-          </div>
 
+            <div className="flex gap-5 text-2xl">
+              <a href="https://t.me/ecoin2026" target="_blank" rel="noopener noreferrer">
+                <FaTelegramPlane className="hover:text-white transition" />
+              </a>
+              <a href="https://x.com/CoinE28810?t=Dm9BWORAfzh5YcuqHYIUwQ&s=09" target="_blank" rel="noopener noreferrer">
+                <FaTwitter className="hover:text-white transition" />
+              </a>
+              <a href="https://discord.com/users/1443996675638300834" target="_blank" rel="noopener noreferrer">
+                <FaDiscord className="hover:text-white transition" />
+              </a>
+              <a href="https://t.me/ecoin2025" target="_blank" rel="noopener noreferrer">
+                          <FaTelegram className="hover:text-white transition" />
+                        </a>
+              <a href="https://chat.whatsapp.com/G1F6USX5NrrLKikm7yiXXQ" target="_blank" rel="noopener noreferrer">
+                <FaWhatsapp className="hover:text-white transition" />
+              </a>          
+            </div>
+
+            <BsStars className="text-3xl mt-4 animate-pulse text-[#D4AF37]" />
+          </div>
         </div>
       </motion.div>
     </section>

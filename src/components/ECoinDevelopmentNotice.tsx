@@ -46,7 +46,7 @@ export default function ECoinDevelopmentNotice() {
           onClick={() => setShowModal(true)}
           className="bg-gradient-to-r from-[#00FF9C] to-[#00C3FF] text-black font-bold py-3 px-10 rounded-full hover:opacity-90 transition"
         >
-          Manifesto Official da EdenKingDom Corporation
+          ⚖️ Manifesto Official da EdenKingDom Corporation
         </button>
       </div>
 
@@ -60,7 +60,7 @@ export default function ECoinDevelopmentNotice() {
             className="bg-[#0a0a0a]/90 border border-[#00FF9C]/30 rounded-2xl p-8 max-w-lg text-center shadow-2xl"
           >
             <h3 className="text-2xl font-semibold text-[#00FF9C] mb-4">
-              Manifesto Official da EdenKingDom Corporation
+              ⚖️ Manifesto Official da EdenKingDom Corporation
             </h3>
             <p className="text-gray-300 mb-6 text-sm leading-relaxed">
   A EdenKingDom Corporation é uma entidade global, independente e multissetorial,
@@ -86,7 +86,7 @@ export default function ECoinDevelopmentNotice() {
             rel="noopener noreferrer"
             className="inline-block bg-gradient-to-r from-[#D4AF37] to-[#f5d97e] text-black font-bold py-3 px-8 rounded-full hover:opacity-90 transition shadow-lg"
           >
-            👉  Visite o whitepaper da EdenKingDom Corporation
+            📜 Visite o whitepaper da EdenKingDom Corporation
           </a>
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function ECoinDevelopmentNotice() {
             rel="noopener noreferrer"
             className="inline-block bg-gradient-to-r from-[#D4AF37] to-[#f5d97e] text-black font-bold py-3 px-8 rounded-full hover:opacity-90 transition shadow-lg"
           >
-            👉 Visite a EdenKingDom Corporation Official
+            🌐 Visite a EdenKingDom Corporation Official
           </a>
         </div>
       </motion.div>
