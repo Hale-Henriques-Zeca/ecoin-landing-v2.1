@@ -61,7 +61,7 @@ const contract = new Contract(CONTRACT_ADDRESS, ABI, signer);
 
 const amountInWei = parseUnits(amount || "0", 18);
 const tx = await contract.buyBack(amountInWei, Number(timeLock));
-await tx.wait();
+const receipt = await tx.wait();
 
       setTxHash(receipt.hash);
       setLocks([...locks, { amount, timeLock, hash: receipt.hash }]);
